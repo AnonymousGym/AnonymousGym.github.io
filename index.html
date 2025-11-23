@@ -1,7 +1,362 @@
-<p>Hello</p>
-<p>This is Yiming Gao</p>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yiming Gao | Research Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<ul>
-  <li> <a href="https://scholar.google.com/citations?user=jgcpFfIAAAAJ&hl=en">Google Scholar</a> </li>
-  <li> <a href="https://www.linkedin.com/in/yiming-gao-69064a227/">LinkedIn</a> </li>
-</ul>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Dark slate background */
+            color: #e2e8f0;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+
+        /* Canvas behind everything */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-teal-500 selection:text-white">
+
+    <!-- Interactive Background -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-gray-800 bg-slate-900/80 backdrop-blur-md transition-all duration-300" id="navbar">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-2xl font-bold whitespace-nowrap text-white">YG.</span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none" aria-controls="navbar-default" aria-expanded="false" id="menu-toggle">
+                <span class="sr-only">Open main menu</span>
+                <i data-lucide="menu"></i>
+            </button>
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-700 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+                    <li><a href="#about" class="block py-2 px-3 text-gray-300 hover:text-teal-400 md:p-0 transition-colors">About</a></li>
+                    <li><a href="#research" class="block py-2 px-3 text-gray-300 hover:text-teal-400 md:p-0 transition-colors">Research</a></li>
+                    <li><a href="#publications" class="block py-2 px-3 text-gray-300 hover:text-teal-400 md:p-0 transition-colors">Publications</a></li>
+                    <li><a href="#education" class="block py-2 px-3 text-gray-300 hover:text-teal-400 md:p-0 transition-colors">Education</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="min-h-screen flex items-center justify-center pt-16">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="inline-block p-1 rounded-full bg-gradient-to-r from-teal-400 to-blue-500 mb-6">
+                <!-- Placeholder for profile image if you have one later -->
+                <div class="w-32 h-32 rounded-full bg-slate-800 flex items-center justify-center overflow-hidden">
+                    <span class="text-4xl">YG</span> 
+                    <!-- <img src="your-photo.jpg" alt="Yiming Gao" class="w-full h-full object-cover"> -->
+                </div>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-blue-400 to-purple-400 pb-2">
+                Yiming Gao
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                PhD Student in Electrical & Computer Engineering at Texas A&M.
+                <br>
+                <span class="text-teal-400">Bioinformatics</span> • <span class="text-blue-400">LLM Agents</span> • <span class="text-purple-400">Machine Learning</span>
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://scholar.google.com/citations?user=jgcpFfIAAAAJ&hl=en" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-full transition-all hover:scale-105">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                    Google Scholar
+                </a>
+                <a href="https://www.linkedin.com/in/yiming-gao-69064a227/" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-[#0077b5] hover:bg-[#006396] text-white rounded-full transition-all hover:scale-105">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    LinkedIn
+                </a>
+                <!-- Placeholder for Email -->
+                <a href="mailto:yiminggao618@tamu.edu" class="flex items-center gap-2 px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-full transition-all hover:scale-105">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                    Contact
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Experience -->
+    <section id="research" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white flex items-center justify-center gap-3">
+                <i data-lucide="microscope" class="text-teal-400"></i> Research Experience
+            </h2>
+
+            <div class="space-y-8">
+                
+                <!-- Item 1: TAMU -->
+                <div class="glass-panel rounded-2xl p-8 hover:border-teal-500/30 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-teal-300">Research Assistant</h3>
+                            <p class="text-lg text-gray-300">Prof. Yang Shen Lab, Texas A&M University (ECE)</p>
+                        </div>
+                        <span class="mt-2 md:mt-0 px-3 py-1 text-sm bg-teal-900/50 text-teal-200 rounded-full border border-teal-800">Sep 2025 – Present</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400">
+                        <li>Leading development of the <strong>Virtual Cell Challenge</strong> project.</li>
+                        <li>Utilizing State models and Correlational Lagrangian Schrodinger Bridge to predict genetic perturbation effects in perturb-seq datasets.</li>
+                    </ul>
+                </div>
+
+                <!-- Item 2: UCSD Hu Lab -->
+                <div class="glass-panel rounded-2xl p-8 hover:border-blue-500/30 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-300">Research Intern (AI Scientist)</h3>
+                            <p class="text-lg text-gray-300">Prof. Zhiting Hu Lab, UCSD Halıcıoğlu Data Science Institute</p>
+                        </div>
+                        <span class="mt-2 md:mt-0 px-3 py-1 text-sm bg-blue-900/50 text-blue-200 rounded-full border border-blue-800">Nov 2023 – June 2025</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400">
+                        <li>Spearheaded <strong>AI Scientist</strong> project: a multi-LLM agent-based AI tool for scientific discovery.</li>
+                        <li>Addressed complex tasks like scRNA-seq cell type annotation and small molecule optimization.</li>
+                        <li>Developed <strong>CellMaster</strong>: an interpretable cell type annotation tool with human-in-the-loop feedback.</li>
+                        <li>Created <strong>scPilot</strong>: the first framework enabling LLMs to analyze scRNA-seq data with interpretable reasoning.</li>
+                    </ul>
+                </div>
+
+                <!-- Item 3: UCSD Feng Lab -->
+                <div class="glass-panel rounded-2xl p-8 hover:border-purple-500/30 transition-colors">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-purple-300">Research Assistant</h3>
+                            <p class="text-lg text-gray-300">Feng Lab of Pathology, UCSD Medical School</p>
+                        </div>
+                        <span class="mt-2 md:mt-0 px-3 py-1 text-sm bg-purple-900/50 text-purple-200 rounded-full border border-purple-800">Apr 2022 – June 2025</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-gray-400">
+                        <li>Primary dry lab analyst focusing on liver cancer mechanisms in aged models.</li>
+                        <li>Performed comprehensive bioinformatics analyses (bulk/single-cell RNA, ATAC-seq, spatial transcriptomics).</li>
+                        <li>Key contributor to discovering TNF-alpha gene upregulation in neutrophils of aged mice.</li>
+                        <li>Managed and optimized lab servers for high-performance computing.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="publications" class="py-20 px-6 bg-slate-900/50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-white flex items-center justify-center gap-3">
+                <i data-lucide="book-open" class="text-teal-400"></i> Selected Publications
+            </h2>
+            <div class="space-y-6">
+                
+                <div class="p-6 border-l-4 border-teal-500 bg-slate-800/50 hover:bg-slate-800 transition-all rounded-r-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2">scPilot: Large Language Model Reasoning Toward Automated Single-Cell Analysis and Discovery</h3>
+                    <p class="text-gray-400 italic">Y. Gao, et al. — NeurIPS 2025</p>
+                </div>
+
+                <div class="p-6 border-l-4 border-blue-500 bg-slate-800/50 hover:bg-slate-800 transition-all rounded-r-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2">CellMaster: Collaborative Cell Type Annotation in Single-Cell Analysis</h3>
+                    <p class="text-gray-400 italic">Z. Wang, Y. Gao*, et al. — Arxiv 2025</p>
+                </div>
+
+                <div class="p-6 border-l-4 border-purple-500 bg-slate-800/50 hover:bg-slate-800 transition-all rounded-r-lg">
+                    <h3 class="text-xl font-semibold text-white mb-2">A TNF-producing neutrophil subset drives age-dependent hepatotoxicity</h3>
+                    <p class="text-gray-400 italic">J. Lee, Y. Gao, et al. — In review, Nature Immunology 2025</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Skills -->
+    <section id="education" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Education Column -->
+            <div>
+                <h2 class="text-3xl font-bold mb-8 text-white flex items-center gap-3">
+                    <i data-lucide="library" class="text-teal-400"></i> Education
+                </h2>
+                <div class="space-y-8 relative pl-6 border-l border-gray-700">
+                    
+                    <!-- PhD -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-teal-500 border-4 border-slate-900"></div>
+                        <h3 class="text-xl font-bold text-white">Texas A&M University</h3>
+                        <p class="text-teal-400">PhD in Electrical & Computer Engineering</p>
+                        <p class="text-sm text-gray-500">2025 – Present</p>
+                        <p class="text-gray-400 mt-1">Advisor: Yang Shen</p>
+                    </div>
+
+                    <!-- BS -->
+                    <div class="relative">
+                        <div class="absolute -left-[31px] w-4 h-4 rounded-full bg-blue-500 border-4 border-slate-900"></div>
+                        <h3 class="text-xl font-bold text-white">University of California, San Diego (UCSD)</h3>
+                        <p class="text-blue-400">B.S. Bioinformatics & B.S. Computer Engineering</p>
+                        <p class="text-sm text-gray-500">2021 – 2025</p>
+                        <p class="text-gray-400 mt-1">Advisors: Zhiting Hu & Gen-Sheng Feng</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Skills Column -->
+            <div>
+                <h2 class="text-3xl font-bold mb-8 text-white flex items-center gap-3">
+                    <i data-lucide="cpu" class="text-teal-400"></i> Skills
+                </h2>
+                
+                <div class="mb-6">
+                    <h4 class="text-sm uppercase tracking-wider text-gray-500 mb-3">Bioinformatics</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-teal-900/30 text-teal-300 border border-teal-800 rounded-md text-sm">scRNA-seq Analysis</span>
+                        <span class="px-3 py-1 bg-teal-900/30 text-teal-300 border border-teal-800 rounded-md text-sm">ATAC-seq</span>
+                        <span class="px-3 py-1 bg-teal-900/30 text-teal-300 border border-teal-800 rounded-md text-sm">Spatial Transcriptomics</span>
+                        <span class="px-3 py-1 bg-teal-900/30 text-teal-300 border border-teal-800 rounded-md text-sm">Cross-omics</span>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-sm uppercase tracking-wider text-gray-500 mb-3">Computer Science</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-300 border border-blue-800 rounded-md text-sm">LLM Agents</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-300 border border-blue-800 rounded-md text-sm">Machine Learning</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-300 border border-blue-800 rounded-md text-sm">Python</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-300 border border-blue-800 rounded-md text-sm">Parallel Computing</span>
+                        <span class="px-3 py-1 bg-blue-900/30 text-blue-300 border border-blue-800 rounded-md text-sm">Linux/Shell</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 text-center text-gray-600 border-t border-gray-800">
+        <p>&copy; 2025 Yiming Gao. Built with HTML, Tailwind & Canvas.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navbar Toggle Logic
+        const toggleBtn = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('navbar-default');
+        
+        toggleBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+
+        // Background Animation (Bio-Network)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        const particleCount = 60;
+        const connectionDistance = 150;
+        
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(45, 212, 191, 0.5)'; // Teal tint
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw connections
+            ctx.strokeStyle = 'rgba(45, 212, 191, 0.1)';
+            ctx.lineWidth = 1;
+            
+            for (let i = 0; i < particles.length; i++) {
+                let p1 = particles[i];
+                p1.update();
+                p1.draw();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dx = p1.x - p2.x;
+                    let dy = p1.y - p2.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+    </script>
+</body>
+</html>
